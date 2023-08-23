@@ -1,0 +1,397 @@
+{
+  "version": "1",
+  "signature": "PostgreSQL JDBC Driver",
+  "date": "2023-08-23T16:40:14.870900673",
+  "sql": "SELECT name_fructs, SUM(f.price*s.count_sales) as final_sales\nFROM sales s INNER JOIN fructs f ON f.id_fructs \u003d s.id_fructs\nWHERE s.id_fructs \u003d 7 and date_sales \u003e\u003d \u00272023-06-01\u0027\nGROUP BY name_fructs\n",
+  "root": [
+    {
+      "name": "",
+      "kind": "Node",
+      "type": "Motion 2:1",
+      "cond": "",
+      "desc": "",
+      "attributes": [
+        {
+          "Startup-Cost": "0.00"
+        },
+        {
+          "Total-Cost": "862.00"
+        },
+        {
+          "Plan-Rows": "1"
+        },
+        {
+          "Actual-Rows": ""
+        },
+        {
+          "width": "16"
+        }
+      ],
+      "child": [
+        {
+          "name": "",
+          "kind": "Aggregate",
+          "type": "GroupAggregate",
+          "cond": "",
+          "desc": "",
+          "attributes": [
+            {
+              "Startup-Cost": "0.00"
+            },
+            {
+              "Total-Cost": "862.00"
+            },
+            {
+              "Plan-Rows": "1"
+            },
+            {
+              "Actual-Rows": ""
+            },
+            {
+              "width": "16"
+            },
+            {
+              "Group Key": "fructs.name_fructs"
+            }
+          ],
+          "child": [
+            {
+              "name": "",
+              "kind": "Sort",
+              "type": "Sort",
+              "cond": "",
+              "desc": "",
+              "attributes": [
+                {
+                  "Startup-Cost": "0.00"
+                },
+                {
+                  "Total-Cost": "862.00"
+                },
+                {
+                  "Plan-Rows": "1"
+                },
+                {
+                  "Actual-Rows": ""
+                },
+                {
+                  "width": "20"
+                },
+                {
+                  "Sort Key": "fructs.name_fructs"
+                }
+              ],
+              "child": [
+                {
+                  "name": "",
+                  "kind": "Node",
+                  "type": "Motion 2:2",
+                  "cond": "",
+                  "desc": "",
+                  "attributes": [
+                    {
+                      "Startup-Cost": "0.00"
+                    },
+                    {
+                      "Total-Cost": "862.00"
+                    },
+                    {
+                      "Plan-Rows": "1"
+                    },
+                    {
+                      "Actual-Rows": ""
+                    },
+                    {
+                      "width": "20"
+                    },
+                    {
+                      "Hash Key": "fructs.name_fructs"
+                    }
+                  ],
+                  "child": [
+                    {
+                      "name": "",
+                      "kind": "Join",
+                      "type": "Join",
+                      "cond": "",
+                      "desc": "",
+                      "attributes": [
+                        {
+                          "Startup-Cost": "0.00"
+                        },
+                        {
+                          "Total-Cost": "862.00"
+                        },
+                        {
+                          "Plan-Rows": "1"
+                        },
+                        {
+                          "Actual-Rows": ""
+                        },
+                        {
+                          "width": "20"
+                        },
+                        {
+                          "Hash Cond": "(fructs.id_fructs \u003d sales.id_fructs)"
+                        }
+                      ],
+                      "child": [
+                        {
+                          "name": "",
+                          "kind": "Node",
+                          "type": "Sequence",
+                          "cond": "",
+                          "desc": "",
+                          "attributes": [
+                            {
+                              "Startup-Cost": "0.00"
+                            },
+                            {
+                              "Total-Cost": "431.00"
+                            },
+                            {
+                              "Plan-Rows": "1"
+                            },
+                            {
+                              "Actual-Rows": ""
+                            },
+                            {
+                              "width": "20"
+                            }
+                          ],
+                          "child": [
+                            {
+                              "name": "",
+                              "kind": "Node",
+                              "type": "Selector for fructs",
+                              "cond": "",
+                              "desc": "",
+                              "attributes": [
+                                {
+                                  "Startup-Cost": "10.00"
+                                },
+                                {
+                                  "Total-Cost": "100.00"
+                                },
+                                {
+                                  "Plan-Rows": "50"
+                                },
+                                {
+                                  "Actual-Rows": ""
+                                },
+                                {
+                                  "width": "4"
+                                },
+                                {
+                                  "Partitions selected": "12 (out of 12)"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "",
+                              "kind": "Node",
+                              "type": "Seq Scan",
+                              "cond": "(id_fructs \u003d 7)",
+                              "desc": "(id_fructs \u003d 7)",
+                              "attributes": [
+                                {
+                                  "Object name": "fructs"
+                                },
+                                {
+                                  "Startup-Cost": "0.00"
+                                },
+                                {
+                                  "Total-Cost": "431.00"
+                                },
+                                {
+                                  "Plan-Rows": "1"
+                                },
+                                {
+                                  "Actual-Rows": ""
+                                },
+                                {
+                                  "width": "20"
+                                },
+                                {
+                                  "Filter": "(id_fructs \u003d 7)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "",
+                          "kind": "Hash",
+                          "type": "Hash",
+                          "cond": "",
+                          "desc": "",
+                          "attributes": [
+                            {
+                              "Startup-Cost": "431.00"
+                            },
+                            {
+                              "Total-Cost": "431.00"
+                            },
+                            {
+                              "Plan-Rows": "1"
+                            },
+                            {
+                              "Actual-Rows": ""
+                            },
+                            {
+                              "width": "8"
+                            }
+                          ],
+                          "child": [
+                            {
+                              "name": "",
+                              "kind": "Node",
+                              "type": "Motion 2:2",
+                              "cond": "",
+                              "desc": "",
+                              "attributes": [
+                                {
+                                  "Startup-Cost": "0.00"
+                                },
+                                {
+                                  "Total-Cost": "431.00"
+                                },
+                                {
+                                  "Plan-Rows": "1"
+                                },
+                                {
+                                  "Actual-Rows": ""
+                                },
+                                {
+                                  "width": "8"
+                                },
+                                {
+                                  "Hash Key": "sales.id_fructs"
+                                }
+                              ],
+                              "child": [
+                                {
+                                  "name": "",
+                                  "kind": "Result",
+                                  "type": "Result",
+                                  "cond": "",
+                                  "desc": "",
+                                  "attributes": [
+                                    {
+                                      "Startup-Cost": "0.00"
+                                    },
+                                    {
+                                      "Total-Cost": "431.00"
+                                    },
+                                    {
+                                      "Plan-Rows": "1"
+                                    },
+                                    {
+                                      "Actual-Rows": ""
+                                    },
+                                    {
+                                      "width": "8"
+                                    }
+                                  ],
+                                  "child": [
+                                    {
+                                      "name": "",
+                                      "kind": "Node",
+                                      "type": "Sequence",
+                                      "cond": "",
+                                      "desc": "",
+                                      "attributes": [
+                                        {
+                                          "Startup-Cost": "0.00"
+                                        },
+                                        {
+                                          "Total-Cost": "431.00"
+                                        },
+                                        {
+                                          "Plan-Rows": "1"
+                                        },
+                                        {
+                                          "Actual-Rows": ""
+                                        },
+                                        {
+                                          "width": "12"
+                                        }
+                                      ],
+                                      "child": [
+                                        {
+                                          "name": "",
+                                          "kind": "Node",
+                                          "type": "Selector for sales",
+                                          "cond": "",
+                                          "desc": "",
+                                          "attributes": [
+                                            {
+                                              "Startup-Cost": "10.00"
+                                            },
+                                            {
+                                              "Total-Cost": "100.00"
+                                            },
+                                            {
+                                              "Plan-Rows": "50"
+                                            },
+                                            {
+                                              "Actual-Rows": ""
+                                            },
+                                            {
+                                              "width": "4"
+                                            },
+                                            {
+                                              "Partitions selected": "7 (out of 12)"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "",
+                                          "kind": "Node",
+                                          "type": "Seq Scan",
+                                          "cond": "((id_fructs \u003d 7)\nand (date_sales \u003e\u003d \u00272023-06-01\u0027::date))",
+                                          "desc": "((id_fructs \u003d 7) AND (date_sales \u003e\u003d \u00272023-06-01\u0027::date))",
+                                          "attributes": [
+                                            {
+                                              "Object name": "sales"
+                                            },
+                                            {
+                                              "Startup-Cost": "0.00"
+                                            },
+                                            {
+                                              "Total-Cost": "431.00"
+                                            },
+                                            {
+                                              "Plan-Rows": "1"
+                                            },
+                                            {
+                                              "Actual-Rows": ""
+                                            },
+                                            {
+                                              "width": "12"
+                                            },
+                                            {
+                                              "Filter": "((id_fructs \u003d 7) AND (date_sales \u003e\u003d \u00272023-06-01\u0027::date))"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
